@@ -19,7 +19,7 @@ export class XHRSentEvent extends AllusionEvent implements IEvent, IShouldQueue 
     XMLHttpRequest.prototype.send = function(...args: any[]) {
       let originalRSC = this.onreadystatechange;
       
-      if(this.alsn_xhr === undefined) {
+      if((this as any).alsn_xhr === undefined) {
         //Works in IE7 above only
         this[wndw._alsn.listenerMethod]((wndw)._alsn.events.readyStateChanged, function(){
           if(this.readyState === 4) {

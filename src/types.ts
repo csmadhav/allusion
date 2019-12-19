@@ -3,4 +3,4 @@ type AllusionConfig = {
     route: string
 }
 
-export {AllusionConfig};
+export { AllusionConfig };

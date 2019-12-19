@@ -1,5 +1,3 @@
-import { AllusionConfig } from "./types";
-
 declare var APP_ENV:String;
 
 export class Environment {

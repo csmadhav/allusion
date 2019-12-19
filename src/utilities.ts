@@ -11,41 +11,41 @@ export class Utilities {
   static getUA() {
     return window.navigator.userAgent;
   }
-  
-  static setCookie(name: string, value: string, props: any = {}) {
+
+  static setCookie(name: string, value: string | null, props: any = {}) {
 
     var exp = props.expires
 
     if (typeof exp == "number" && exp) {
       var d = new Date()
 
-      d.setTime(d.getTime() + exp*1000)
+      d.setTime(d.getTime() + exp * 1000)
 
       exp = props.expires = d
     }
 
-    if(exp && exp.toUTCString) { 
-      props.expires = exp.toUTCString() 
+    if (exp && exp.toUTCString) {
+      props.expires = exp.toUTCString()
     }
 
-    value = encodeURIComponent(value)
+    value = encodeURIComponent(value || false)
 
     var updatedCookie = name + "=" + value
 
-    for(var propName in props) {
+    for (var propName in props) {
       updatedCookie += "; " + propName
 
       var propValue = props[propName]
 
-      if(propValue !== true) { 
-        updatedCookie += "=" + propValue 
+      if (propValue !== true) {
+        updatedCookie += "=" + propValue
       }
     }
 
     document.cookie = updatedCookie
   }
 
-  
+
   static deleteCookie(name: string) {
     this.setCookie(name, null, { expires: -1 })
   }
@@ -59,7 +59,7 @@ export class Utilities {
   }
 
   static urlB64ToUint8Array(base64String: any) {
-    const eq:string = '='
+    const eq: string = '='
     const padding = eq.repeat((4 - base64String.length % 4) % 4);
     const base64 = (base64String + padding)
       .replace(/\-/g, '+')

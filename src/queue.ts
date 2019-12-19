@@ -1,7 +1,7 @@
-import {Environment} from './environment';
-import {ErrorEvent} from './events/error';
-import {AllusionEvent} from './events/event';
-import {PromiseRejectionEvent} from './events/promise-rejection-event';
+import { Environment } from './environment';
+import { ErrorEvent } from './events/error';
+import { AllusionEvent } from './events/event';
+import { PromiseRejectionEvent } from './events/promise-rejection-event';
 
 export class QueueService {
   queue: Array<any> = [];
@@ -11,8 +11,8 @@ export class QueueService {
   push(allusionEvent: AllusionEvent) {
     let length = this.queue.length;
     let eventData = {
-      event_type: allusionEvent.EVENT_TYPE, 
-      visit_timestamp: allusionEvent.timeStamp, 
+      event_type: allusionEvent.EVENT_TYPE,
+      visit_timestamp: allusionEvent.timeStamp,
       event_data: allusionEvent.event
     };
 
@@ -21,13 +21,13 @@ export class QueueService {
      * By checking if timeStamp length is quite huge and comparable with Epoch timestamp (in milliseconds)
      * Subtracting it by visit timestamp.
      */
-     
-    if(allusionEvent.timeStamp && allusionEvent.timeStamp.toString().length >= 13) {
+
+    if (allusionEvent.timeStamp && allusionEvent.timeStamp.toString().length >= 13) {
       eventData.visit_timestamp = allusionEvent.timeStamp - (new Date((window as any)._alsn.visited_at)).getTime();
     }
     this.queue.push(eventData);
     this.errorEvents.forEach((errorEvent) => {
-      if(allusionEvent instanceof errorEvent) {
+      if (allusionEvent instanceof errorEvent) {
         this.send();
       }
     });

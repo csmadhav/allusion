@@ -1,4 +1,4 @@
 export interface IEvent {
-  listen():any,
-  handler(event: Event):any
+  listen(): any,
+  handler(event: Event): any
 }

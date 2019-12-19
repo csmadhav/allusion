@@ -1,6 +1,13 @@
-import {QueueService} from './queue';
-import {Utilities} from './utilities';
-import {AllusionConfig} from './types';
+import { QueueService } from './queue';
+import { Utilities } from './utilities';
+import { AllusionConfig } from './types';
+import { LoadEvent } from './events/load';
+import { Environment } from './environment';
+import { ClickEvent } from './events/click';
+import { ErrorEvent } from './events/error';
+import { ChangeEvent } from './events/change';
+import { XHRSentEvent } from './events/xhr/sent';
+import { PromiseRejectionEvent } from './events/promise-rejection-event';
 
 export class Allusion {
   public queueService: QueueService = new QueueService;
@@ -16,18 +23,43 @@ export class Allusion {
   public listenerMethod: string = 'addEventListener';
   public dispatchMethod: string = 'dispatchEvent';
   public config: AllusionConfig;
-  public userId: string;
+  public userId: string | undefined;
   public visit_id: string;
   public visited_at: string;
-  
+
   constructor(config: AllusionConfig) {
     this.config = config;
     this.userId = Utilities.getCookie('alsn_uid');
-    if(! this.userId) {
+    if (!this.userId) {
       this.userId = Utilities.generateId();
       Utilities.setCookie('alsn_uid', this.userId);
     }
     this.visit_id = Utilities.generateId();
     this.visited_at = (new Date).toISOString();
+  }
+
+  init() {
+    try {
+      let events = [
+        ClickEvent,
+        LoadEvent,
+        XHRSentEvent,
+        ErrorEvent,
+        PromiseRejectionEvent,
+        ChangeEvent
+      ];
+
+      events = events.map((event: any) => {
+        event = (new event);
+        event.listen();
+        return event;
+      });
+    } catch (e) {
+      if (Environment.isDev()) {
+        throw e;
+      } else {
+        console.error(`[Allusion JS internal]:`, e);
+      }
+    }
   }
 }
