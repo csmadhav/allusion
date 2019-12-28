@@ -1,4 +1,10 @@
-declare var APP_ENV:String;
+declare var process : {
+  env: {
+    NODE_ENV: string
+  }
+}
+
+var APP_ENV = process.env.NODE_ENV;
 
 export class Environment {
 

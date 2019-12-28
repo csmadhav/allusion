@@ -4,9 +4,9 @@
   "description": "A bug tracking framework.",
   "main": "lib/allusion.js",
   "scripts": {
-    "start": "webpack --config webpack.config.js --mode=development",
-    "dev": "webpack-dev-server --config webpack.config.js --mode=development",
-    "build:standalone": "webpack --config webpack.config.js --mode=production",
+    "start": "webpack --config standalone.config.js --mode=development",
+    "dev": "webpack-dev-server --config standalone.config.js --mode=development",
+    "build:standalone": "webpack --config standalone.config.js --mode=production",
     "build": "tsc"
   },
   "prePublish": "tsc",

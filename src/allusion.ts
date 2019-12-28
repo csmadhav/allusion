@@ -37,9 +37,11 @@ export class Allusion {
     this.visit_id = Utilities.generateId();
     this.visited_at = (new Date).toISOString();
   }
-
+  
   init() {
     try {
+      (window as any)._alsn = this;
+      
       let events = [
         ClickEvent,
         LoadEvent,
@@ -54,6 +56,7 @@ export class Allusion {
         event.listen();
         return event;
       });
+
     } catch (e) {
       if (Environment.isDev()) {
         throw e;

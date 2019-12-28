@@ -27,7 +27,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-          'APP_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+          'APP_ENV': process.env.NODE_ENV || 'development',
     }),
     new HtmlWebpackPlugin({
       filename: 'index.html',
