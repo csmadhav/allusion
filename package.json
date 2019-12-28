@@ -1,6 +1,6 @@
 {
   "name": "allusionjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A bug tracking framework.",
   "main": "app.ts",
   "scripts": {
@@ -16,9 +16,7 @@
     "typescript": "^3.7.3",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.1",
-    "webpack-dev-server": "^3.9.0"
-  },
-  "dependencies": {
+    "webpack-dev-server": "^3.9.0",
     "clean-webpack-plugin": "^0.1.19",
     "html-webpack-plugin": "^3.2.0"
   }
