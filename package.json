@@ -4,22 +4,24 @@
   "description": "A bug tracking framework.",
   "main": "lib/allusion.js",
   "scripts": {
-    "start": "webpack --config standalone.config.js --mode=development",
+    "start": "rimraf dist && webpack --config standalone.config.js --mode=development",
     "dev": "webpack-dev-server --config standalone.config.js --mode=development",
-    "build:standalone": "webpack --config standalone.config.js --mode=production",
-    "build": "tsc"
+    "build:standalone": "rimraf dist && webpack --config standalone.config.js --mode=production",
+    "build": "rimraf lib && tsc"
   },
   "prePublish": "tsc",
   "author": "C S Madhav<chaturvedimadhav502@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "html-webpack-plugin": "^3.2.0",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.3",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.1",
-    "webpack-dev-server": "^3.9.0",
-    "clean-webpack-plugin": "^0.1.19",
-    "html-webpack-plugin": "^3.2.0"
+    "webpack-dev-server": "^3.9.0"
   },
-  "dependencies":{}
+  "dependencies": {
+    "copy-webpack-plugin": "^5.1.1",
+    "rimraf": "^3.0.2"
+  }
 }
