@@ -41,6 +41,7 @@ export class QueueService {
       global_visit_id: (window as any)._alsn.visit_id,
       url: (window as any).location.href,
       visited_at: (window as any)._alsn.visited_at,
+      user_agent: (window as any).navigator.userAgent,
       events: this.queue.slice(0, lastIndex + 1)
     }
 
