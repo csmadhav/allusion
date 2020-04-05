@@ -1,0 +1,61 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Getting Started · Allusion JS</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## What is Allusion JS?"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Getting Started · Allusion JS"/><meta property="og:type" content="website"/><meta property="og:url" content="https://csmadhav.github.io/allusion/"/><meta property="og:description" content="## What is Allusion JS?"/><meta property="og:image" content="https://csmadhav.github.io/allusion/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://csmadhav.github.io/allusion/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/allusion/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/allusion/js/scrollSpy.js"></script><link rel="stylesheet" href="/allusion/css/main.css"/><script src="/allusion/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/allusion/"><img class="logo" src="/allusion/img/favicon.ico" alt="Allusion JS"/><h2 class="headerTitleWithLogo">Allusion JS</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive siteNavItemActive"><a href="/allusion/docs/what-and-how" target="_self">Docs</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Jump-in</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Jump-in</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/allusion/docs/what-and-how">Getting Started</a></li><li class="navListItem"><a class="navItem" href="/allusion/docs/installation">Installation</a></li><li class="navListItem"><a class="navItem" href="/allusion/docs/api-references">API Reference</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Getting Started</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="what-is-allusion-js"></a><a href="#what-is-allusion-js" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>What is Allusion JS?</h2>
+<p>Allusion JS is the javascript bug tracking framework, embed Allusion JS into your source and it will track all the javascript errors and pushes them to an endpoint configured by you. You just need to expose an endpoint from your backend services where Allusion's SDK will push errors to, this endpoint could lead to logs and alerting management platforms like Splunk or ELK. Allusion JS can give you deep insights about user interactions. It provides events in form of a timeline which makes debugging easy!</p>
+<h2><a class="anchor" aria-hidden="true" id="how-it-works"></a><a href="#how-it-works" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How it works?</h2>
+<p>Import as an NPM module or a standalone JS into your source code. When Allusion JS is loaded onto the page it starts tracking all the user interactions, XHRs, unhandled promise rejections etc and classify these into events. Whenever an event of type &quot;Error&quot; comes up it pushes all the events happened till now to the configured endpoint. Dont worry we wont track the values of sensitive input fields like password :-). Why its important to push these logs to server? Imagine a user is trying to do some payments and the errors are coming up while validating or doing the payment, you are loosing a business there and those errors need to be logged to debug it as fast as possibile.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-next button" href="/allusion/docs/installation"><span>Installation</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#what-is-allusion-js">What is Allusion JS?</a></li><li><a href="#how-it-works">How it works?</a></li></ul></nav></div><footer class="nav-footer" id="footer"><a href="/allusion" rel="noreferrer noopener" class="fbOpenSource"><img src="/allusion/img/logo.png" width="50"/></a><section class="copyright">Allusion JS | <a href="https://csmadhav.github.io">C S Madhav</a> | made with ❤️ in India</section><section class="copyright"><div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div></section></footer></div></body></html>
