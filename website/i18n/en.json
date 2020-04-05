@@ -5,26 +5,17 @@
     "previous": "Previous",
     "tagline": "A JavaScript bug tracking framework",
     "docs": {
-      "help": {
-        "title": "help"
+      "api-references": {
+        "title": "API Reference"
       },
       "installation": {
         "title": "Installation"
       },
-      "setup-options": {
-        "title": "Setup Options"
-      },
-      "the-payload": {
-        "title": "The Payload"
-      },
       "what-and-how": {
-        "title": "Getting Started",
-        "sidebar_label": "What is Allusion JS?"
+        "title": "Getting Started"
       }
     },
-    "links": {
-      "Docs": "Docs"
-    },
+    "links": {},
     "categories": {
       "Jump-in": "Jump-in"
     }

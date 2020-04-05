@@ -1,6 +1,5 @@
 type AllusionConfig = {
-    origin: string,
-    route: string
+    trackingUrl: string,
 }
 
 export { AllusionConfig };

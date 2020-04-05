@@ -60,11 +60,11 @@ class HomeSplash extends React.Component {
 
     return (
       <SplashContainer>
-        <Logo img_src={`${baseUrl}img/logo.png`} />
+        <img width="200" src={`${baseUrl}img/logo.png`} />
         <div className="inner">
-          <ProjectTitle tagline={siteConfig.tagline} title={siteConfig.title} />
+          <ProjectTitle tagline={"An open source javascript bug tracking framework"} title={siteConfig.title} />
           <PromoSection>
-            <Button href="#try">Try It Out</Button>
+            <Button href="./docs/what-and-how">Docs</Button>
           </PromoSection>
         </div>
       </SplashContainer>
@@ -121,7 +121,7 @@ class Index extends React.Component {
           {
             content:
               'This is another description of how this project is useful',
-            image: `${baseUrl}img/undraw_note_list.svg`,
+            image: `${baseUrl}im  g/undraw_note_list.svg`,
             imageAlign: 'right',
             title: 'Description',
           },
@@ -147,17 +147,17 @@ class Index extends React.Component {
       <Block layout="fourColumn">
         {[
           {
-            content: 'This is the content of my feature',
-            image: `${baseUrl}img/undraw_react.svg`,
+            content: 'Get timeline of events since the DOM loaded which makes debugging easy.',
+            image: `${baseUrl}img/timeline.svg`,
             imageAlign: 'top',
-            title: 'Feature One',
+            title: 'Timeline events',
           },
           {
-            content: 'The content of my second feature',
-            image: `${baseUrl}img/undraw_operating_system.svg`,
+            content: 'Integrate with your inhouse logging and alerting platforms!',
+            image: `${baseUrl}img/gear.svg`,
             imageAlign: 'top',
-            title: 'Feature Two',
-          },
+            title: 'Integration',
+          }
         ]}
       </Block>
     );
@@ -196,10 +196,6 @@ class Index extends React.Component {
         <HomeSplash siteConfig={siteConfig} language={language} />
         <div className="mainContainer">
           <Features />
-          <FeatureCallout />
-          <LearnHow />
-          <TryOut />
-          <Description />
           <Showcase />
         </div>
       </div>
