@@ -5,8 +5,8 @@ window._alsn = {
 }
 
 function getInTouch() {
-    // Something seems broken here:
-    throw new Error(`something broke inside getInTouch`);
+    // calling track API here.
+    _alsn.track(new Error(`something broke inside getInTouch`));
 }
 
 window.addEventListener('load', () => {
