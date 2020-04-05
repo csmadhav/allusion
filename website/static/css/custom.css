@@ -7,6 +7,13 @@
  
 /* your custom css */
 
+.fbOpenSource {
+    width:50px!important;
+}
+.homeContainer {
+    background-color: #ffd9d9;
+}
+
 @media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
 }
 
