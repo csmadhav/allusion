@@ -2,7 +2,7 @@ export class Utilities {
   static  getCookie(name: string): (string | undefined) {
     const value = "; " + document.cookie;
     const parts = value.split("; " + name + "=");
-    const last = parts.pop();
+    const last = parts[parts.length - 1];
     if (parts.length == 2 && last) {
         return last.split(";").shift();
     }
