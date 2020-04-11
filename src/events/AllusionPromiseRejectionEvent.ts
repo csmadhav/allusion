@@ -7,7 +7,6 @@ export class AllusionPromiseRejectionEvent extends AllusionEvent implements Push
   eventType = Events.promiseRejectionEvent;
 
   serialize(event: PromiseRejectionEvent): void {
-    console.log(event);
     this.timeStamp = Math.ceil(event.timeStamp);
     if (event.reason) {
       this.event.errorMessage = event.reason.message;
