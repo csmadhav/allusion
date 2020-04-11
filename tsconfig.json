@@ -4,8 +4,13 @@
     "module": "commonjs",
     "declaration": true,
     "outDir": "./lib",
-    "strict": false
+    "strict": true,
+    "rootDir": "src",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./typings"
+    ]
   },
   "include": ["src"],
-  "exclude": ["node_modules", "**/__tests__/*", "src/app.ts"]
+  "exclude": ["node_modules", "**/__tests__/*", "src/app.js"]
 }

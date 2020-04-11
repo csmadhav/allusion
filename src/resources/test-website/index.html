@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Allusion Test</title>
+    <style>
+        button {
+            display: block;
+            width: 300px;
+            border: none;
+            background-color: #4CAF50;
+            padding: 14px 28px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        input {
+            display: block;
+            width: 240px;
+            border: 1px black solid;
+            padding: 14px 28px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        img {
+            display: block;
+            margin: auto;
+        }
+
+        .action-buttons {
+            width: 300px;
+            margin: auto;
+        }
+    </style>
+    <script>
+        const baseURL = "http://localhost:8080";
+        window._alsn = {
+            config: { trackingUrl: baseURL + "/track" }
+        }
+
+        function sendTestXHRSuccess() {
+            var oReq = new XMLHttpRequest();
+            oReq.addEventListener("load", function () {
+                console.log(this.responseText)
+            });
+            oReq.open("POST", baseURL + "/track");
+            oReq.send();
+        }
+
+        function sendTestXHRFail() {
+            var oReq = new XMLHttpRequest();
+            oReq.addEventListener("load", function () {
+                console.log(this.responseText)
+            });
+            oReq.open("GET", baseURL + "/track");
+            oReq.send();
+        }
+
+        function promiseRejection() {
+            new Promise((res, rej) => {
+                rej();
+            })
+        }
+
+        function customError() {
+            throw new Error("this is the custom error")
+        }
+
+        function corsXHR() {
+            var oReq = new XMLHttpRequest();
+            oReq.addEventListener("load", function () {
+                console.log(this.responseText)
+            });
+            oReq.open("POST", "https://google.com");
+            oReq.send();
+        }
+    </script>
+</head>
+
+<body>
+    <img width="50" src="https://raw.githubusercontent.com/csmadhav/allusion/master/logo.png" />
+    <hr />
+    <div class="action-buttons">
+        <button>ClickEvent</button><br />
+        <input type="text" value="for input change event." /><br />
+        <button onclick="sendTestXHRSuccess()">Click to send plain success xhr</button><br />
+        <button onclick="sendTestXHRFail()">Click to send plain fail xhr</button><br />
+        <button onclick="corsXHR()">CORS XHR</button><br />
+        <button onclick="promiseRejection()">Promise Rejection Event</button><br />
+        <button onclick="customError()">Custom Error</button><br />
+    </div>
+</body>
+
+</html>
