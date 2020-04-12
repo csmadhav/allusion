@@ -9,7 +9,7 @@ import { AllusionPromiseRejectionEvent } from "../events/AllusionPromiseRejectio
 import { LoadEvent } from "../events/LoadEvent";
 import { Environment } from "../EnvironmentB";
 
-jest.mock("../Utilities");
+jest.mock("../UtilitiesB");
 jest.mock("../events/ClickEvent");
 jest.mock("../events/AllusionErrorEvent");
 jest.mock("../events/ChangeEvent");
