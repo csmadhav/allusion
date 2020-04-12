@@ -33,7 +33,7 @@ export class QueueService {
   private send(): void {
     const lastIndex = this.queue.length - 1;
     const payload = {
-      globalUserID: window._alsn.userId,
+      globalUserID: window._alsn.userID,
       globalVisitID: window._alsn.visitID,
       url: window.location.href,
       visitedAt: window._alsn.visitedAt,

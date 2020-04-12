@@ -5,10 +5,6 @@ export class Environment {
     return (APP_ENV === "development");
   }
 
-  static isLocal(): boolean {
-    return (APP_ENV === "local");
-  }
-
   static isProd(): boolean {
     return (APP_ENV === "production");
   }
