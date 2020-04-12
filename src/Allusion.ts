@@ -13,16 +13,16 @@ import { AllusionEvent } from "./events/AllusionEvent";
 export class Allusion {
   public queueService: QueueService = new QueueService;
   public config: AllusionConfig;
-  public userId: string | undefined;
+  public userID: string | undefined;
   public visitID: string;
   public visitedAt: string;
 
   constructor(config: AllusionConfig) {
     this.config = config;
-    this.userId = Utilities.getCookie("alsn_uid");
-    if (!this.userId) {
-      this.userId = Utilities.generateId();
-      Utilities.setCookie("alsn_uid", this.userId);
+    this.userID = Utilities.getCookie("alsn_uid");
+    if (!this.userID) {
+      this.userID = Utilities.generateId();
+      Utilities.setCookie("alsn_uid", this.userID);
     }
     this.visitID = Utilities.generateId();
     this.visitedAt = (new Date).toISOString();
