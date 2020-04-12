@@ -1,0 +1,17 @@
+
+  
+language: node_js
+
+before_install:
+  - nvm install $NODE
+
+script:
+  - npm run build
+  - npm run build:standalone
+  - npm run test
+
+env:
+  - NODE=stable
+
+node_js:
+  - stable
