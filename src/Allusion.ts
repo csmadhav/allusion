@@ -2,7 +2,7 @@ import { QueueService } from "./QueueService";
 import { Utilities } from "./Utilities";
 import { AllusionConfig } from "./types";
 import { LoadEvent } from "./events/LoadEvent";
-import { Environment } from "./environment";
+import { Environment } from "./Environment";
 import { ClickEvent } from "./events/ClickEvent";
 import { AllusionErrorEvent } from "./events/AllusionErrorEvent";
 import { ChangeEvent } from "./events/ChangeEvent";
@@ -12,18 +12,17 @@ import { AllusionEvent } from "./events/AllusionEvent";
 
 export class Allusion {
   public queueService: QueueService = new QueueService;
-  public dispatchMethod = "dispatchEvent";
   public config: AllusionConfig;
-  public userId: string | undefined;
+  public userID: string | undefined;
   public visitID: string;
   public visitedAt: string;
 
   constructor(config: AllusionConfig) {
     this.config = config;
-    this.userId = Utilities.getCookie("alsn_uid");
-    if (!this.userId) {
-      this.userId = Utilities.generateId();
-      Utilities.setCookie("alsn_uid", this.userId);
+    this.userID = Utilities.getCookie("alsn_uid");
+    if (!this.userID) {
+      this.userID = Utilities.generateId();
+      Utilities.setCookie("alsn_uid", this.userID);
     }
     this.visitID = Utilities.generateId();
     this.visitedAt = (new Date).toISOString();
