@@ -1,4 +1,4 @@
-import { Allusion } from "../Allusion";
+import { Allusion } from "../AllusionB";
 
 declare global {
     interface Window { _alsn: Allusion }

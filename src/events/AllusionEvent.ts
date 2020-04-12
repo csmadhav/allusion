@@ -1,4 +1,4 @@
-import { Utilities } from "../Utilities";
+import { Utilities } from "../UtilitiesB";
 import { Events, AllusionEventData } from "../types";
 
 export abstract class AllusionEvent {

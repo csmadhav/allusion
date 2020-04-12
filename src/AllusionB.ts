@@ -1,8 +1,8 @@
 import { QueueService } from "./QueueService";
-import { Utilities } from "./Utilities";
+import { Utilities } from "./UtilitiesB";
 import { AllusionConfig } from "./types";
 import { LoadEvent } from "./events/LoadEvent";
-import { Environment } from "./Environment";
+import { Environment } from "./EnvironmentB";
 import { ClickEvent } from "./events/ClickEvent";
 import { AllusionErrorEvent } from "./events/AllusionErrorEvent";
 import { ChangeEvent } from "./events/ChangeEvent";

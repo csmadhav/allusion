@@ -1,13 +1,13 @@
-import { Allusion } from "../Allusion";
+import { Allusion } from "../AllusionB";
 import { AllusionConfig } from "../types";
-import { Utilities } from "../Utilities";
+import { Utilities } from "../UtilitiesB";
 import { ClickEvent } from "../events/ClickEvent";
 import { AllusionErrorEvent } from "../events/AllusionErrorEvent";
 import { ChangeEvent } from "../events/ChangeEvent";
 import { XHRSentEvent } from "../events/XHRSentEvent";
 import { AllusionPromiseRejectionEvent } from "../events/AllusionPromiseRejectionEvent";
 import { LoadEvent } from "../events/LoadEvent";
-import { Environment } from "../Environment";
+import { Environment } from "../EnvironmentB";
 
 jest.mock("../Utilities");
 jest.mock("../events/ClickEvent");

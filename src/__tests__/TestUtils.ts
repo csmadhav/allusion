@@ -1,4 +1,4 @@
-import { Allusion } from "../Allusion";
+import { Allusion } from "../AllusionB";
 
 class TestUtils {
     static setAllusionObjectInWindow(): void {
