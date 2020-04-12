@@ -1,4 +1,4 @@
-import { Utilities } from "../UtilitiesB";
+import { Utilities } from "../Utilities";
 
 describe("testing util class", () => {
     test("generateId should return string of length 13", () => {
