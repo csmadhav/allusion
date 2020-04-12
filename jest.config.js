@@ -1,6 +1,7 @@
 module.exports = {
   preset: "ts-jest",
   testEnvironment: "jsdom",
-  testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+  // should end with spec.ts and should be under __tests__
+  testRegex: ".spec.ts$",
   moduleFileExtensions: ["ts", "js"],
 };

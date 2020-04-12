@@ -2,7 +2,7 @@ module.exports = {
     root: true,
     parser: "babel-eslint",
     extends: [
-      "eslint:recommended",
+      "eslint:recommended"
     ],
     rules:  {
         semi: ["error", "always"],
@@ -19,11 +19,13 @@ module.exports = {
         parser: "@typescript-eslint/parser",
         plugins: [
           "@typescript-eslint",
+          "jsdoc"
         ],
         extends: [
           "eslint:recommended",
           "plugin:@typescript-eslint/eslint-recommended",
           "plugin:@typescript-eslint/recommended",
+          "plugin:jsdoc/recommended"
         ]
       }
     ]
