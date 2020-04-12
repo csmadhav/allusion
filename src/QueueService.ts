@@ -4,11 +4,11 @@ import { AllusionPromiseRejectionEvent } from "./events/AllusionPromiseRejection
 import { QueuePayload } from "./types";
 
 export class QueueService {
-  queue: Array<QueuePayload> = [];
+  private queue: Array<QueuePayload> = [];
 
-  errorEvents = [AllusionErrorEvent, AllusionPromiseRejectionEvent];
+  private errorEvents = [AllusionErrorEvent, AllusionPromiseRejectionEvent];
 
-  push(allusionEvent: AllusionEvent): void {
+  public push(allusionEvent: AllusionEvent): void {
     const respectedEventData = {
       eventType: allusionEvent.eventType,
       visitTimestamp: allusionEvent.timeStamp,
@@ -30,7 +30,7 @@ export class QueueService {
     });
   }
 
-  send(): void {
+  private send(): void {
     const lastIndex = this.queue.length - 1;
     const payload = {
       globalUserID: window._alsn.userId,
@@ -50,7 +50,7 @@ export class QueueService {
     xhr.send(JSON.stringify(payload));
   }
 
-  clear(): void {
-    this.queue = [];
+  public getQueue(): Array<QueuePayload> {
+    return this.queue;
   }
 }
