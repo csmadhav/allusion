@@ -4,3 +4,4 @@ dist
 *.swp
 lib
 website/build
+coverage
