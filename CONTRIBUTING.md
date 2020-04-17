@@ -56,7 +56,6 @@ When you send a PR, just make sure that:
 * You add valid test cases (you can run them using `npm run test`).
 * Tests are green.
 * You check build (you can run using `npm run build` and `npm run build:standalone`).
-* Please go through [Pull request Template](./.github/PULL_REQUEST_TEMPLATE.md), before making any **Pull Request**.
 
 
 
