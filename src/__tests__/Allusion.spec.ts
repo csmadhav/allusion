@@ -8,7 +8,6 @@ import { XHRSentEvent } from "../events/XHRSentEvent";
 import { AllusionPromiseRejectionEvent } from "../events/AllusionPromiseRejectionEvent";
 import { LoadEvent } from "../events/LoadEvent";
 import { Environment } from "../Environment";
-import {TestUtils} from "./TestUtils";
 
 jest.mock("../Utilities");
 jest.mock("../events/ClickEvent");
@@ -23,9 +22,16 @@ describe("testing allusion", () => {
         trackingUrl: "http://localhost:8080/track"
     };
 
+    let alsn: Allusion;
+
+    beforeEach(() => {
+        alsn = new Allusion(config);
+        jest.resetAllMocks();
+    });
+
     test("testing constructor", () => {
-        const alsn = new Allusion(config);
         expect(alsn.config).toEqual(config);
+        alsn = new Allusion(config);
         // verifying number of calls here.
         expect(Utilities.setCookie).toHaveBeenCalledTimes(1);
         expect(Utilities.generateId).toHaveBeenCalledTimes(2);
@@ -33,7 +39,6 @@ describe("testing allusion", () => {
     });
 
     test("call to init", () => {
-        const alsn = new Allusion(config);
         alsn.init();
         expect(ClickEvent.prototype.listen).toHaveBeenCalledTimes(1);
         expect(LoadEvent.prototype.listen).toHaveBeenCalledTimes(1);
@@ -52,7 +57,6 @@ describe("testing allusion", () => {
         ClickEvent.prototype.listen = (): void => {
             throw err;
         };
-        const alsn = new Allusion(config);
         alsn.init();
     });
 
@@ -62,20 +66,18 @@ describe("testing allusion", () => {
         ClickEvent.prototype.listen = (): void => {
             throw err;
         };
-        const alsn = new Allusion(config);
         expect(() => {
             alsn.init();
         }).toThrow();
     });
 
     test("track has been called successfully on dev env", () => {
-        const alsn = new Allusion(config);
         alsn.track(new Error("Error object"));
         expect(AllusionErrorEvent.prototype.handler).toHaveBeenCalledTimes(1);
     });
 
     test("static track has been called successfully on dev env", () => {
-        TestUtils.setAllusionObjectInWindow();
+        window._alsn = alsn;
         Allusion.track(new Error("Error object"));
         expect(AllusionErrorEvent.prototype.handler).toHaveBeenCalledTimes(1);
     });
