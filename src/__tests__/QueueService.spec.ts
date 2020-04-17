@@ -45,6 +45,8 @@ describe("testing queue service", () => {
                 expect(JSON.parse(body)).toEqual({
                     "url": "http://localhost/",
                     "visitedAt": window._alsn.visitedAt,
+                    "globalUserID": window._alsn.userID,
+                    "globalVisitID": window._alsn.visitID,
                     "events": [
                         {
                             "eventType": "click",
