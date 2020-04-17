@@ -1,6 +1,6 @@
 # AllusionJS
 
-![allusion logo](<https://github.com/csmadhav/allusionjs/raw/master/logo.png> =100x)
+<img src="https://github.com/csmadhav/allusionjs/raw/master/logo.png" width="100">
 
 ----
 
