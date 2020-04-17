@@ -8,6 +8,7 @@ import { XHRSentEvent } from "../events/XHRSentEvent";
 import { AllusionPromiseRejectionEvent } from "../events/AllusionPromiseRejectionEvent";
 import { LoadEvent } from "../events/LoadEvent";
 import { Environment } from "../Environment";
+import {TestUtils} from "./TestUtils";
 
 jest.mock("../Utilities");
 jest.mock("../events/ClickEvent");
@@ -66,4 +67,17 @@ describe("testing allusion", () => {
             alsn.init();
         }).toThrow();
     });
+
+    test("track has been called successfully on dev env", () => {
+        const alsn = new Allusion(config);
+        alsn.track(new Error("Error object"));
+        expect(AllusionErrorEvent.prototype.handler).toHaveBeenCalledTimes(1);
+    });
+
+    test("static track has been called successfully on dev env", () => {
+        TestUtils.setAllusionObjectInWindow();
+        Allusion.track(new Error("Error object"));
+        expect(AllusionErrorEvent.prototype.handler).toHaveBeenCalledTimes(1);
+    });
+    
 });
