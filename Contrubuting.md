@@ -22,6 +22,8 @@ git clone git@github.com:[YOUR_FORK_HERE]/allusion.git
 cd allusion
 
 npm i
+
+git chechkout -b <tag>#<issue number>/-<short description>
 ```
 
 After finishing the installation process, you can start writing and editing code.
@@ -35,5 +37,26 @@ or,
 npm run test
 ```
 
+## Sending a Pull Request
 
+When you send a PR, just make sure that:
+
+* You add valid test cases (you can run them using `npm run test`).
+* Tests are green.
+* You check build (you can run using `npm run build` and `npm run build:standalone`).
+* You make the PR on the same branch you based your changes on.
+* Also don't forget to add a comment when you update a PR with a ping to [the maintainer](https://github.com/csmadhav/allusion), so he will get a notification.
+* Squash your commits into one commit.
+
+All Pull Requests must include the following header:
+
+```markdown
+| Q             | A
+| ------------- | ---
+| Bug fix?      | yes/no
+| New feature?  | yes/no
+| Tests pass?   | yes
+| Fixed issues  | #1
+| Description   | Summarize your task done
+```
 
