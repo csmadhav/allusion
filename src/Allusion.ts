@@ -62,8 +62,8 @@ export class Allusion {
         error: exception,
         message: exception.message,
       });
-      const allusinErrorEvent = new AllusionErrorEvent();
-      allusinErrorEvent.handler(error);
+      const allusionErrorEvent = new AllusionErrorEvent();
+      allusionErrorEvent.handler(error);
     }
   }
 
