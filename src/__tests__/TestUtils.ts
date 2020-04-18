@@ -12,7 +12,8 @@ class TestUtils {
             error : new Error("custom error object"),
             message : "custom error message",
             lineno : 402,
-            filename : "test.js"
+            filename : "test.js",
+            colno: 90
         });
     }
 

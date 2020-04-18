@@ -14,6 +14,9 @@ type AllusionEventData = {
     // Error related
     stack: string | undefined;
     errorMessage: string | undefined;
+    lineNo: number | undefined;
+    colNo: number | undefined;
+    fileName: string | undefined;
     // XHR related
     url: string | undefined;
     method: string | undefined;

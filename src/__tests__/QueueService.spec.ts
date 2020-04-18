@@ -60,7 +60,10 @@ describe("testing queue service", () => {
                             "visitTimestamp": Math.ceil(customErrorEvent.timeStamp) - (new Date(window._alsn.visitedAt)).getTime(),
                             "eventData": {
                                 "errorMessage": customErrorEvent.message,
-                                "stack": customErrorEvent.error.stack
+                                "stack": customErrorEvent.error.stack,
+                                "fileName": customErrorEvent.filename,
+                                "colNo": customErrorEvent.colno,
+                                "lineNo": customErrorEvent.lineno,
                             }
                         }
                     ],

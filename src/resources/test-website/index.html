@@ -61,7 +61,7 @@
 
         function promiseRejection() {
             new Promise((res, rej) => {
-                rej();
+                rej(new Error("Promise is rejected here"));
             })
         }
 

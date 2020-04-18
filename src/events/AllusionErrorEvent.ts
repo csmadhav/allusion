@@ -10,5 +10,8 @@ export class AllusionErrorEvent extends AllusionEvent implements PushableEvent, 
     this.timeStamp = Math.ceil(event.timeStamp);
     this.event.errorMessage = event.message;
     this.event.stack = event.error.stack;
+    this.event.fileName = event.filename;
+    this.event.lineNo = event.lineno;
+    this.event.colNo = event.colno;
   }
 }
