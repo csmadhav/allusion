@@ -22,8 +22,14 @@ describe("testing allusion", () => {
         trackingUrl: "http://localhost:8080/track"
     };
 
+    let alsn: Allusion;
+    beforeEach(() => {
+        alsn = new Allusion(config);
+        jest.resetAllMocks();
+    });
+
     test("testing constructor", () => {
-        const alsn = new Allusion(config);
+        alsn = new Allusion(config);
         expect(alsn.config).toEqual(config);
         // verifying number of calls here.
         expect(Utilities.setCookie).toHaveBeenCalledTimes(1);
@@ -32,7 +38,6 @@ describe("testing allusion", () => {
     });
 
     test("call to init", () => {
-        const alsn = new Allusion(config);
         alsn.init();
         expect(ClickEvent.prototype.listen).toHaveBeenCalledTimes(1);
         expect(LoadEvent.prototype.listen).toHaveBeenCalledTimes(1);
@@ -42,7 +47,7 @@ describe("testing allusion", () => {
         expect(ChangeEvent.prototype.listen).toHaveBeenCalledTimes(1);
     });
 
-    test("call to init fails with exception on on-dev env", () => {
+    test("call to init fails with exception on non-dev env", () => {
         const err = new Error("random error");
         console.error = (message?: string, errorActual?: Error): void => {
             expect(message).toEqual("[Allusion JS internal]:");
@@ -51,7 +56,6 @@ describe("testing allusion", () => {
         ClickEvent.prototype.listen = (): void => {
             throw err;
         };
-        const alsn = new Allusion(config);
         alsn.init();
     });
 
@@ -61,9 +65,19 @@ describe("testing allusion", () => {
         ClickEvent.prototype.listen = (): void => {
             throw err;
         };
-        const alsn = new Allusion(config);
         expect(() => {
             alsn.init();
         }).toThrow();
     });
-});
+
+    test("call to track using allusion object", () => {
+        alsn.track(new Error("Custom Error"));
+        expect(AllusionErrorEvent.prototype.handler).toHaveBeenCalledTimes(1);
+    });
+
+    test("call to static track method, which internally call to track", () => {
+        window._alsn = alsn;
+        Allusion.track(new Error("Custom Error"));
+        expect(AllusionErrorEvent.prototype.handler).toHaveBeenCalledTimes(1);
+    });
+ });

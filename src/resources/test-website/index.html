@@ -77,6 +77,12 @@
             oReq.open("POST", "https://google.com");
             oReq.send();
         }
+
+        function trackMethod(){
+            // calling track API here.
+  	        _alsn.track(new Error(`something broke here`));
+        }
+        
     </script>
 </head>
 
@@ -91,6 +97,7 @@
         <button onclick="corsXHR()">CORS XHR</button><br />
         <button onclick="promiseRejection()">Promise Rejection Event</button><br />
         <button onclick="customError()">Custom Error</button><br />
+        <button onClick="trackMethod()">Click to send error using track method</button><br />
     </div>
 </body>
 

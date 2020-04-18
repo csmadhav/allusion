@@ -53,4 +53,22 @@ export class Allusion {
       }
     }
   }
+
+  track(exception: Error): void {
+    try {
+      throw exception;
+    } catch (exception) {
+      const error = new ErrorEvent("error", {
+        error: exception,
+        message: exception.message,
+      });
+      const allusionErrorEvent = new AllusionErrorEvent();
+      allusionErrorEvent.handler(error);
+    }
+  }
+
+  // static method to call via npm module as _alsn.track() from any class.
+  static track(exception: Error): void {
+    window._alsn.track(exception);
+  }
 }

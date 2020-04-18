@@ -2,12 +2,9 @@ import { Allusion } from "../Allusion";
 
 class TestUtils {
     static setAllusionObjectInWindow(): void {
-        window._alsn = {
-            visitedAt: (new Date).toISOString(),
-            config: {
-                trackingUrl: "https://localhost:8080/track"
-            }
-        } as Allusion;
+        window._alsn = new Allusion({
+            trackingUrl: "http://localhost:8080/track"
+        });
     }
 
     static getErrorEvent(): ErrorEvent {
