@@ -70,12 +70,12 @@ describe("testing allusion", () => {
         }).toThrow();
     });
 
-    test("call to track using allusin object", () => {
+    test("call to track using allusion object", () => {
         alsn.track(new Error("Custom Error"));
         expect(AllusionErrorEvent.prototype.handler).toHaveBeenCalledTimes(1);
     });
 
-    test("call to static track, which internall call to track", () => {
+    test("call to static track method, which internally call to track", () => {
         window._alsn = alsn;
         Allusion.track(new Error("Custom Error"));
         expect(AllusionErrorEvent.prototype.handler).toHaveBeenCalledTimes(1);
